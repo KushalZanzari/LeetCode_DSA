@@ -12,15 +12,11 @@ class Solution {
             return dp[idx][g1][g2];
 
         long ans = 0;
-
-        // Ignore current element
         ans = solve(idx + 1, g1, g2, nums);
-
-        // Put in seq1
+        
         int ng1 = (g1 == 0) ? nums[idx] : gcd(g1, nums[idx]);
         ans = (ans + solve(idx + 1, ng1, g2, nums)) % MOD;
 
-        // Put in seq2
         int ng2 = (g2 == 0) ? nums[idx] : gcd(g2, nums[idx]);
         ans = (ans + solve(idx + 1, g1, ng2, nums)) % MOD;
 
